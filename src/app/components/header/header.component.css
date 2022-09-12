@@ -1,0 +1,12 @@
+.navbar-brand {
+    color: red;
+}
+.nav-link{
+    color: red;
+}
+.active{
+    color: goldenrod !important;
+}
+.navbar-toggler{
+    background-color:goldenrod;
+}

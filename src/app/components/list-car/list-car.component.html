@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <span class="h3 text-center">Cars List</span>
+            <div class="row">
+              <div class="col-md-12">
+                <label>Filtrar por:</label>
+              </div>
+              <div class="col-md-4"><input type="text" name ="filterPost" [(ngModel)] = "filterPost"></div>
+            </div>
+            <div>
+            <button class="btn-dark btn mt-2">View Image</button>
+            <button class="btn-dark btn mt-2 float-end">Add Car</button>
+            </div>
+           
+            <table *ngIf ="listCar.length > 0" class="table table-striped mt-2">
+                <thead>
+                  <tr>
+                    <th >Image</th>
+                    <th >Name</th>
+                    <th >Brand</th>
+                    <th >Model</th>
+                    <th >Characteristics</th>
+                    <th >Motor</th>
+                    <th >Price</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let car of listCar | pipes : filterPost">
+                    <td><p><img [src]='car.importFile'></p></td>
+                    <!-- <td>{{car.importFile}}</td> -->
+                    <td>{{car.name}}</td>
+                    <td>{{car.brand}}</td>
+                    <td>{{car.model}}</td>
+                    <td>{{car.characteristics}}</td>
+                    <td>{{car.motor}}</td>
+                    <td>{{car.price | currency:'USD'}}</td>
+                    <td>
+                        <fa-icon [routerLink]="['/editCar',car._id ]" class="text-info" icon="pen"></fa-icon>
+                        <fa-icon (click)="deleteCar(car._id)" class="text-danger" icon="trash" ></fa-icon> 
+                    </td>     
+                  </tr>
+                 
+                </tbody>
+              </table>
+              <h5 style="text-align:start; margin-top:10px ;" *ngIf ="listCar.length == 0">There are not cars to show</h5>
+
+        </div>
+    </div>
+</div>
+<script>
+    console.log(car.importFile.value)
+</script>

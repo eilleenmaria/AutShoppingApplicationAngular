@@ -1,0 +1,73 @@
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center">
+                <div class="card-body card-bodyAdd">
+                    <h3>{{titulo | uppercase}}</h3>
+                    <form class="mt-4" novalidate [formGroup] = "carForm" (ngSubmit)="addCar()" >
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                                <div class="text-danger" *ngIf="carForm.get('name')?.hasError('required') && carForm.get('name')?.touched">
+                                    <span>Name is <strong>required</strong> </span>
+                                </div>                                
+                            </div>
+                           
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Brand"
+                                formControlName="brand">
+                                <div class="text-danger" *ngIf="carForm.get('brand')?.hasError('required') && carForm.get('brand')?.touched">
+                                    <span>Brand is <strong>required</strong> </span>
+                                </div>   
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control mt-3"placeholder="Model"
+                                formControlName="model">
+                                <div class="text-danger" *ngIf="carForm.get('model')?.hasError('required') && carForm.get('model')?.touched">
+                                    <span>Model is <strong>required</strong> </span>
+                                </div>   
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control mt-3" placeholder="Category"
+                                formControlName="category">
+                                <div class="text-danger" *ngIf="carForm.get('category')?.hasError('required') && carForm.get('category')?.touched">
+                                    <span>Category is <strong>required</strong> </span>
+                                </div>                             
+                            </div>
+                        </div>
+                        <textarea class="form-control mt-3" placeholder="Characteristics" formControlName="characteristics"></textarea>
+                        <div class="text-danger" *ngIf="carForm.get('characteristics')?.hasError('required') && carForm.get('characteristics')?.touched">
+                            <span>Characteristics is <strong>required</strong> </span>
+                        </div>   
+                    
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control mt-3" placeholder="Motor"  formControlName="motor">
+                                <div class="text-danger" *ngIf="carForm.get('motor')?.hasError('required') && carForm.get('motor')?.touched">
+                                    <span>Motor is <strong>required</strong> </span>
+                                </div>   
+                            </div>
+                        
+                            <div class="col">
+                                <input type="text" class="form-control mt-3" placeholder="Price"  formControlName="price">
+                                <div class="text-danger" *ngIf="carForm.get('price')?.hasError('required') && carForm.get('price')?.touched">
+                                    <span>Price is <strong>required</strong> </span>
+                                </div>   
+                            
+                            </div>
+                        </div>
+                        <app-photo-base64 formControlName="importFile" ></app-photo-base64>
+                        
+                           
+                      <div class=" d-grid gap-2 d-md-block mt-3">
+                        <button type="text" routerLink="/listCar" class="btn-dark btn btn-lg mr-8">Return</button>
+                        <button type="submit" [disabled]="carForm.invalid" class=" btn btn-dark btn-lg">Add</button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
