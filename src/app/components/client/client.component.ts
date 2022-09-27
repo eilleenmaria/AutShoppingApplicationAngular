@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Client } from 'src/app/models/client';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Route, Router } from '@angular/router';
@@ -10,20 +10,16 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-  quieroContact:boolean =false ;
+  quiereContact =false ;
   clientForm:FormGroup;
 
   constructor(private toastr: ToastrService, private _myroute : Router) { this.clientForm = new FormGroup({
     name: new FormControl ('', Validators.required),
     password:new FormControl ('', Validators.required),
-    contact: new FormControl (false),
     email: new FormControl (''),
     phoneNumber:  new FormControl (''),
 
   })
-}
-verContact(){
-  this.quieroContact = !this.quieroContact
 }
 
 register(){
@@ -35,6 +31,6 @@ ngOnInit(): void {
 }
 
 
- 
+
 
 }

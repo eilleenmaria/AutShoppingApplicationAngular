@@ -6,10 +6,10 @@ export class Car{
     category:string;
     characteristics: string;
     motor: string;
-    price: number;
-    importFile: string;
+    price:string;
+    importFile: File;
 
-    constructor(name:string, brand:string, model:string, category:string, characteristics:string, motor:string, price:number, importFile:string){
+    constructor(name:string, brand:string, model:string, category:string, characteristics:string, motor:string, price:string, importFile:File){
         this.name=name;
         this.brand=brand;
         this.model=model;

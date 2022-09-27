@@ -1,27 +1,27 @@
 <!-- <form> -->
-    <div class="form-group">
+    <!-- <div class="form-group">
         <fieldset class="form-group">
 
-            <label>Add image</label>
-            {{imageError}}
-            <div class="custom-file fileInputProfileWrap">
-                <input  [type]='type' 
-                 [readOnly]="!!isReadOnly" [(ngModel)]="value" (change)="fileChangeEvent($event)" class="fileInputProfile">
-                <div class="img-space">
+            <label class="mt-2">Add image</label>
+            {{imageError}} -->
+            <!-- <div class="input-file">
+                <input  [type]='type' style="background: goldenrod;"
+                 [readOnly]="!!isReadOnly" [(ngModel)]="value" (change)="fileChangeEvent($event)" class="fileInputProfile" >
+                <img class="img-fluid img-thumbnail image" *ngIf="image" [src]={{image}}> -->
 
-                    <ng-container *ngIf="isImageSaved; else elseTemplate">
+                    <!-- <ng-container *ngIf="isImageSaved; else elseTemplate">
                         <img [src]="cardImageBase64" />
                     </ng-container>
                     <ng-template #elseTemplate>
 
-                        <img src="../../assets/foto.png" class="img-responsive">
-                    </ng-template>
+                        <fa-icon icon="camera"  size="6x" class="img-responsive"></fa-icon>
+                    </ng-template> -->
 
-                </div>
+                <!-- </div>
 
-            </div>
-        </fieldset>
-    </div>
-    <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+            </div> -->
+        <!-- </fieldset>
+    </div> -->
+    <!-- <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a> -->
 <!-- </form> -->
 

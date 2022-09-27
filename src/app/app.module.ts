@@ -17,7 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListCarComponent } from './components/list-car/list-car.component';
-import { CarouselPauseComponent } from './components/carousel-pause/carousel-pause.component';
+import { CarouselBasicComponent } from './components/carousel-pause/carousel-basic.component';
 import { PipesPipe } from './pipes/pipes.pipe';
 import { PhotoBase64Component } from './components/photo-base64/photo-base64.component';
 
@@ -30,7 +30,7 @@ import { PhotoBase64Component } from './components/photo-base64/photo-base64.com
     HeaderComponent,
     HomeComponent,
     ListCarComponent,
-    CarouselPauseComponent,
+   CarouselBasicComponent,
     PipesPipe,
     PhotoBase64Component
   ],
@@ -47,8 +47,9 @@ import { PhotoBase64Component } from './components/photo-base64/photo-base64.com
     ToastrModule.forRoot(),
   
   ],
-  exports: [PhotoBase64Component],
-  bootstrap: [AppComponent]
+ 
+  exports: [PhotoBase64Component, ],
+  bootstrap: [AppComponent,]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {

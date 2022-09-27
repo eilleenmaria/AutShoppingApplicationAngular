@@ -10,23 +10,23 @@
                 <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3 form-check">
-            <input type="checkbox" name="contact" [(ngModel)]="verContact" [ngModelOptions]="{standalone: true}" class="form-check-input" id="proporcionaDatos">
+             <input type="checkbox" [ngModelOptions]="{standalone: true}"  [(ngModel)]="quiereContact"  class="form-check-input" id="proporcionaDatos"> 
             <label class="form-check-label" for="proporcionaDatos">¿Desea contacto?</label>
             </div>
-            <div class="mb-3" *ngIf=" verContact">
-                <label for="correo" class="form-label"> Dirección de correo</label>
-                <input type="email" formControlName="email"class="form-control" id="correo" aria-describedby="correoHelp">
+            <div class="mb-3" *ngIf="quiereContact">
+                <label for="correo" class="form-label"> Email</label>
+                <input type="email" formControlName="email" class="form-control" id="correo" aria-describedby="correoHelp">
                 <div id="correoHelp" class="form-text">Nunca compartiremos tu correo con nadie.                        
                 </div>
             </div>
-            <div class="mb-3" *ngIf="verContact">
-                <label for="telefono" class="form-label">Teléfono</label>
+            <div class="mb-3" *ngIf="quiereContact">
+                <label for="telefono" class="form-label">phone Number</label>
                 <input type="number"formControlName="phoneNumber" class="form-control" id="telefono" aria-describedby="telefonoHelp">
                 <div id="telefonoHelp" class="form-text">Tu teléfono está seguro con nosotros                        
                 </div>
             </div>
             <div class="d-md-block">
-            <button class="btn btn-primary" type="button" (click)="register()">Registra Cliente</button>
+            <button class="btn btn-dark" style="color:goldenrod" type="button" (click)="register()">Register</button>
             </div>     
         </div>
     </div>

@@ -20,7 +20,7 @@ export class PhotoBase64Component implements ControlValueAccessor {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
-  
+  file:any;
   
   
   control: FormControl;
@@ -57,6 +57,7 @@ export class PhotoBase64Component implements ControlValueAccessor {
   fileChangeEvent(fileInput: any) {
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
+      this.file = <File>fileInput.target.files[0];
        // Size Filter Bytes
        const max_size = 20971520;
        const allowed_types = ['image/png', 'image/jpeg'];
@@ -100,11 +101,10 @@ export class PhotoBase64Component implements ControlValueAccessor {
              }
           };
        };
-
-       reader.readAsDataURL(fileInput.target.files[0]);
-       console.log(fileInput);
-       console.log(this.cardImageBase64);
-    }
+       
+       reader.readAsDataURL(this.file);
+       
+       }
  }
 
  removeImage() {

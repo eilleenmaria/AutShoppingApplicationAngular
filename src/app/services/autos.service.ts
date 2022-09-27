@@ -8,23 +8,37 @@ import { Car } from 'src/app/models/cart';
   providedIn: 'root'
 })
 export class AutosService {
-  url= 'http://localhost:4000/api/car/';
+  url= 'http://localhost:4000';
   
   constructor(private http:HttpClient ) { }
   getCars():Observable<any>{
-    return this.http.get(this.url);
+    return this.http.get(`${this.url}/view`);
   }
-  deleteCar(id:string):Observable<any>{
-    return this.http.delete(this.url + id);
+  uploadCar(name: string, brand: string, model: string,
+    category:string, characteristics: string, motor: string,
+    price: string, file: File):Observable<object>{
+      const form = new FormData()
+      form.append('name',name);
+      form.append('brand',brand);
+      form.append('model',model);
+       form.append('category',category);
+      form.append('characteristics',characteristics);
+      form.append('motor',motor);
+      form.append('price',price);     
+      form.append('file',file,'form-data');
+      return this.http.post<object>(`${this.url}/car`,form);
+    }
+  deleteCar(id:string):Observable<object>{
+    return this.http.delete<object>(`${this.url}/delete/${id}`);
   }
-  saveCar(car:Car):Observable<any>{
-    return this.http.post(this.url, car);
-  }
+  // saveCar(car:Car):Observable<any>{
+  //   return this.http.post(this.url, car);
+  // }
   obtainCar(id: string):Observable<any>{
-    return this.http.get(this.url + id);
+    return this.http.get(`${this.url}/onecar/${id}`);
   }
-  editCar(id:string, car:Car):Observable<any>{
-    return this.http.post(this.url + id, car);
+  editCar(id:string, car:Car):Observable<object>{
+    return this.http.post<object>(`${this.url}/update/${id}`, car);
   }
 }
 
