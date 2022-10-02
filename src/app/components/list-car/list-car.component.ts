@@ -21,9 +21,10 @@ export class ListCarComponent implements OnInit {
   }
   getCars(){
     this._carService.getCars().subscribe(data =>{
+        
       console.log(data);
     
-      this.listCar = data;      
+      this.listCar = data;          
     },error => {
       console.log(error);
     })
@@ -32,7 +33,7 @@ export class ListCarComponent implements OnInit {
 
   deleteCar(id:any){
     this._carService.deleteCar(id).subscribe(data =>{
-      this.toastr.error('the car had delete');
+      this.toastr.error('the car has been deleted');
       this.getCars();
     },error=>{console.log(error);
     

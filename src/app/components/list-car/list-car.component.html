@@ -1,12 +1,12 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-body">
-            <span class="h3 text-center">Cars List</span>
+            <span class="h3 text-center titulo-principal">Cars List</span>
             <div class="row">
               <div class="col-md-12">
                 <label>Filtrar por:</label>
               </div>
-              <div class="col-md-4"><input type="text" name ="filterPost" [(ngModel)] = "filterPost"></div>
+              <div class=" col-md-4"><input class="filter" type="text" name ="filterPost" [(ngModel)] = "filterPost"></div>
             </div>
             <div>
             <button class="btn-dark btn mt-2" style="color:goldenrod ;" (click)="viewImage()" >{{seeImage ? "Hidden " : "View "}} Image</button>
@@ -28,7 +28,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let car of listCar | pipes : filterPost">
-                    <td ><img class="imageCar" *ngIf="seeImage" src="{{car.file}}"></td>
+                    <td ><img class="imageCar" *ngIf="seeImage" [src]="'http://localhost:4000/' + car.file"></td>
                     <td>{{car.name}}</td>
                     <td>{{car.brand}}</td>
                     <td>{{car.model}}</td>

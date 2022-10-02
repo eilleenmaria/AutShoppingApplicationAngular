@@ -1,11 +1,13 @@
-<div style="background-image: url(../../../assets/landscape-2-1400x700.jpg); background-repeat: no-repeat;  background-size: cover;   position:relative" >
 <div class="container  pt-2">
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <div class="card text-center">
                 <div class="card-body card-bodyAdd">
-                    <h3>{{titulo | uppercase}}</h3>
-                    <form class="mt-4"  [formGroup] = "carForm" (ngSubmit)="addCar()" >
+                    <h3 class="titulo-principal">{{titulo | uppercase}}</h3>
+                    <div *ngIf="loading" class="spinner-border float-right" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    <form class="mt-4"  [formGroup] = "carForm" (ngSubmit)=" addEditCar()" >
                         <div class="row">
                             <div class="col">
                                 <input type="text" class="form-control" placeholder="Name" formControlName="name">
@@ -77,5 +79,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

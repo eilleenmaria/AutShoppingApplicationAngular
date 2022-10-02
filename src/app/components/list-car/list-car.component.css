@@ -1,3 +1,6 @@
+/* .titulo-principal{
+    color: #b10718;
+} */
 fa-icon{
     cursor: pointer;
     margin-right: 8px;
@@ -5,4 +8,17 @@ fa-icon{
 .imageCar{
     width: 100px;
     height: 100px;
+}
+.card{
+    background-image: linear-gradient(to right top, #d20719, #ca3c39, #bd5754, #ab6d6c, #938181);
+}
+.container{
+   
+    box-shadow: 10px 10px 30px 10px rgb(26 72 100 / 30%);
+    opacity: 0.8;
+    border-radius: 5px;
+    padding: 0;
+}
+.filter{
+    background-color: goldenrod ;
 }

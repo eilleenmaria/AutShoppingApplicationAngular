@@ -25,20 +25,18 @@ export class AutosService {
       form.append('characteristics',characteristics);
       form.append('motor',motor);
       form.append('price',price);     
-      form.append('file',file,'form-data');
+      form.append('file',file);
       return this.http.post<object>(`${this.url}/car`,form);
     }
   deleteCar(id:string):Observable<object>{
     return this.http.delete<object>(`${this.url}/delete/${id}`);
   }
-  // saveCar(car:Car):Observable<any>{
-  //   return this.http.post(this.url, car);
-  // }
+  
   obtainCar(id: string):Observable<any>{
     return this.http.get(`${this.url}/onecar/${id}`);
   }
-  editCar(id:string, car:Car):Observable<object>{
-    return this.http.post<object>(`${this.url}/update/${id}`, car);
+  editCar(id:string, data:any):Observable<object>{
+    return this.http.post<object>(`${this.url}/update/${id}`, data);
   }
 }
 

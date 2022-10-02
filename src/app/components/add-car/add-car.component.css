@@ -1,20 +1,6 @@
 
-/* .imageAddCar{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    background-image: url(../../../assets/fondoaddcar.jpg);
-    background-size: cover;  
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    opacity :0.8;
- 
-   
-} */
 .card-body{
-    background-color:  grey;
+    background-image: linear-gradient(to right top, #d20719, #ca3c39, #bd5754, #ab6d6c, #938181);
     backdrop-filter: blur(30px);
     box-shadow: 10px 20px 15px 10px rgb(26 72 100 / 40%);
     opacity: 0.8;

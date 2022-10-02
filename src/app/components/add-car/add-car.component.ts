@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Car } from 'src/app/models/cart';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,6 +15,8 @@ export class AddCarComponent implements OnInit {
   titulo = 'Add Car';
   image:any= "../../../assets/fotoimage.jpg"
   file: any;
+  loading = false;
+  
   id : string | null;
   constructor(private toastr: ToastrService,
     private router:Router , private _carService: AutosService, private aRouter: ActivatedRoute) {
@@ -52,10 +54,20 @@ export class AddCarComponent implements OnInit {
       }
     }
   }
+  addEditCar(){
+    
+    if (this.id === null){
+      this.addCar();
+    }else{
+      this.editCar(this.id);
+    }
+  }
+ 
   
   addCar(){
     const form = this.carForm;
         if(form.valid){
+          this.loading = true;
           this._carService.uploadCar(
             form.value.name,
             form.value.brand,
@@ -66,27 +78,48 @@ export class AddCarComponent implements OnInit {
             form.value.price,
             this.file
           ).subscribe(data =>{
-            this.carForm = new FormGroup({
-              name:new FormControl (null ),
-              brand: new FormControl (null ),
-              model: new FormControl ( null),
-              category:new FormControl (null ),
-              characteristics: new FormControl (null),
-              motor: new FormControl (null),
-              price: new FormControl (null),
-              file: new FormControl (null),
-              
-            })
-            this.image ="../../../assets/foto.png" ;
-          })
+            this.toastr.success('Successful registration', 'Registered car!');
+            this.loading = false;
+      this.router.navigate(['/listCar']);
+    },error => {
+      console.log(error);
+      this.carForm.reset();
+      this.loading = false;
+    })
+            
         }
         console.log(this.carForm);
       } 
 
+      editCar(id: string){
+        const form = this.carForm;
+        if(form.valid){
+            form.value.name,
+            form.value.brand,
+            form.value.model,
+            form.value.category,
+            form.value.characteristics,
+            form.value.motor,
+            form.value.price,
+            this.file
+          }
+            this.loading = true;
+            this._carService.editCar(id,form
+          ).subscribe(data =>{
+            this.loading = false;
+            this.toastr.info('Car updated successfully', 'Updated car!', {
+              positionClass: 'toast-bottom-right'
+            })
+            this.router.navigate(['/listCar']);
+          })
+      }      
+
       isUpdate(){
+        this.titulo = 'Edit car';
           if(this.id !== null){
-            this.titulo = 'Edit car';
-            this._carService.obtainCar(this.id).subscribe(data =>(
+            this.loading = true;
+            this._carService.obtainCar(this.id).subscribe(data =>{
+              this.loading = false;
               this.carForm.setValue({
                 name: data.name,
                 brand: data.brand,
@@ -97,63 +130,7 @@ export class AddCarComponent implements OnInit {
                 price: data.price,
                 file: data.file,
               })
-            ))
+            })
           }
-        }
-      
-    // const CAR:Car = {
-    //   name: this.carForm.get('name')?.value,
-    //   brand: this.carForm.get('brand')?.value,
-    //   model: this.carForm.get('model')?.value,
-    //   category:this.carForm.get('category')?.value,
-    //   characteristics: this.carForm.get('characteristics')?.value,
-    //   motor: this.carForm.get('motor')?.value,
-    //   price: this.carForm.get('price')?.value,
-    //   importFile: this.carForm.get('importFile')?.value,
-    //}
-    // console.log(this.carForm.get('importFile')?.value);
-    // console.log(this.carForm.get('importFile'));
-   
-    // console.log(this.carForm);
-  //   if(this.id !== null){
-  //     // edit car
-  //     this._carService.editCar(this.id, CAR).subscribe(data =>{
-  //         this.toastr.success('Car updated successfully', 'Updated car!');
-  //         this.router.navigate(['/listCar']);
-  //       },error =>{
-  //         console.log(error);
-  //         this.carForm.reset();
-  //     })
-  //   }else{
-  //     console.log(CAR);
-  //     this._carService.saveCar(CAR).subscribe( data =>{
-  //     this.toastr.success('Successful registration', 'Registered car!');
-  //     this.router.navigate(['/listCar']);
-  //   },error =>{
-  //     console.log(error);
-  //     this.carForm.reset();
-  //   })
-  //     // add car
-  //   }
-    
-    
-  // }
-  // isUpdate(){
-  //   if(this.id !== null){
-  //     this.titulo = 'Edit car';
-  //     this._carService.obtainCar(this.id).subscribe(data =>(
-  //       this.carForm.setValue({
-  //         name: data.name,
-  //         brand: data.brand,
-  //         model: data.model,
-  //         category:data.category,
-  //         characteristics: data.characteristics,
-  //         motor: data.motor,
-  //         price: data.price,
-  //         importFile: data.importFile,
-  //       })
-  //     ))
-  //   }
-    
-  // }
+        }  
 }

@@ -21,6 +21,7 @@ import { CarouselBasicComponent } from './components/carousel-pause/carousel-bas
 import { PipesPipe } from './pipes/pipes.pipe';
 import { PhotoBase64Component } from './components/photo-base64/photo-base64.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,8 @@ import { PhotoBase64Component } from './components/photo-base64/photo-base64.com
    CarouselBasicComponent,
     PipesPipe,
     PhotoBase64Component
+   
+
   ],
   imports: [
     BrowserModule,
