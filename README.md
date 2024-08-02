@@ -1,4 +1,17 @@
 # AutShopping
+Angular CRUD aplication developed with bootstrap and nodejs backend.
+
+<img src= "/src/assets/view/autshoppinghome.png" width="800">
+<br>
+
+## View car add
+
+<img src= "/src/assets/view/autshoppingadd.png" width="800">
+<br>
+
+## View car list
+<img src= "/src/assets/view/autshoppingaddlist.png" width="800">
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
 
