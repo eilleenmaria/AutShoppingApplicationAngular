@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ListCarComponent implements OnInit {
   seeImage:boolean=false;
   listCar : Car[] =[];
+  url:string = 'https://backendautshopping.onrender.com/';
   constructor(private _carService: AutosService, private toastr: ToastrService,  private _myroute : Router) {
     // this.obtainCars();
    }
@@ -20,14 +21,21 @@ export class ListCarComponent implements OnInit {
     this.getCars()
   }
   getCars(){
-    this._carService.getCars().subscribe(data =>{
-        
-      console.log(data);
-    
-      this.listCar = data;          
-    },error => {
-      console.log(error);
+    this._carService.getCars().subscribe({
+      next: (data) =>{
+        console.log(data);
+        this.listCar = data;
+      },
+      error:(e) => console.error(e)
     })
+    // this._carService.getCars().subscribe(data =>{
+        
+    //   console.log(data);
+    
+    //   this.listCar = data;          
+    // },error => {
+    //   console.log(error);
+    // })
   }
   
 

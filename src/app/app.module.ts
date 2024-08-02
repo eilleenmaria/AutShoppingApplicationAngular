@@ -20,6 +20,7 @@ import { ListCarComponent } from './components/list-car/list-car.component';
 import { CarouselBasicComponent } from './components/carousel-pause/carousel-basic.component';
 import { PipesPipe } from './pipes/pipes.pipe';
 import { PhotoBase64Component } from './components/photo-base64/photo-base64.component';
+import { EditCarComponent } from './components/edit-car/edit-car.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { PhotoBase64Component } from './components/photo-base64/photo-base64.com
     ListCarComponent,
    CarouselBasicComponent,
     PipesPipe,
-    PhotoBase64Component
+    PhotoBase64Component,
+    EditCarComponent
    
 
   ],

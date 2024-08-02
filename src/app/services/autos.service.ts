@@ -8,7 +8,7 @@ import { Car } from 'src/app/models/cart';
   providedIn: 'root'
 })
 export class AutosService {
-  url= 'http://localhost:4000';
+  url= 'https://backendautshopping.onrender.com';
   
   constructor(private http:HttpClient ) { }
   getCars():Observable<any>{
@@ -35,8 +35,8 @@ export class AutosService {
   obtainCar(id: string):Observable<any>{
     return this.http.get(`${this.url}/onecar/${id}`);
   }
-  editCar(id:string, data:any):Observable<object>{
-    return this.http.post<object>(`${this.url}/update/${id}`, data);
+  editCar(id:string, car:Car):Observable<object>{
+    return this.http.put<object>(`${this.url}/update/${id}`, car);
   }
 }
 

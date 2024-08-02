@@ -37,31 +37,32 @@ export class AddCarComponent implements OnInit {
       file: new FormControl (null,Validators.required),
       
     });
-    this.isUpdate();
+    // this.isUpdate();
   }
   fileChangeEvent(event){
     if(event.target.files && event.target.files.length>0){
       const file = event.target.files[0];
+      console.log(file.type);
       if(file.type.includes('image')){
         const reader = new FileReader()
         reader.readAsDataURL(file);
         reader.onload = function load(){
-          this.image = reader.result;
+          this.image = reader.result;          
         }.bind(this);
+        console.log(this.image);
         this.file = file;
+        console.log(file)
       }else{
         console.log("There was an error")
       }
     }
   }
-  addEditCar(){
+  // addEditCar(){
     
-    if (this.id === null){
-      this.addCar();
-    }else{
-      this.editCar(this.id);
-    }
-  }
+  //   if (this.id === null){
+  //     this.addCar();
+  //   }
+  // }
  
   
   addCar(){
@@ -91,46 +92,46 @@ export class AddCarComponent implements OnInit {
         console.log(this.carForm);
       } 
 
-      editCar(id: string){
-        const form = this.carForm;
-        if(form.valid){
-            form.value.name,
-            form.value.brand,
-            form.value.model,
-            form.value.category,
-            form.value.characteristics,
-            form.value.motor,
-            form.value.price,
-            this.file
-          }
-            this.loading = true;
-            this._carService.editCar(id,form
-          ).subscribe(data =>{
-            this.loading = false;
-            this.toastr.info('Car updated successfully', 'Updated car!', {
-              positionClass: 'toast-bottom-right'
-            })
-            this.router.navigate(['/listCar']);
-          })
-      }      
+      // editCar(id: string){
+      //   const form = this.carForm;
+      //   if(form.valid){
+      //       form.value.name,
+      //       form.value.brand,
+      //       form.value.model,
+      //       form.value.category,
+      //       form.value.characteristics,
+      //       form.value.motor,
+      //       form.value.price,
+      //       this.file
+      //     }
+      //       this.loading = true;
+      //       this._carService.editCar(id,form
+      //     ).subscribe(data =>{
+      //       this.loading = false;
+      //       this.toastr.info('Car updated successfully', 'Updated car!', {
+      //         positionClass: 'toast-bottom-right'
+      //       })
+      //       this.router.navigate(['/listCar']);
+      //     })
+      // }      
 
-      isUpdate(){
-        this.titulo = 'Edit car';
-          if(this.id !== null){
-            this.loading = true;
-            this._carService.obtainCar(this.id).subscribe(data =>{
-              this.loading = false;
-              this.carForm.setValue({
-                name: data.name,
-                brand: data.brand,
-                model: data.model,
-                category:data.category,
-                characteristics: data.characteristics,
-                motor: data.motor,
-                price: data.price,
-                file: data.file,
-              })
-            })
-          }
-        }  
+      // isUpdate(){
+      //   this.titulo = 'Edit car';
+      //     if(this.id !== null){
+      //       this.loading = true;
+      //       this._carService.obtainCar(this.id).subscribe(data =>{
+      //         this.loading = false;
+      //         this.carForm.setValue({
+      //           name: data.name,
+      //           brand: data.brand,
+      //           model: data.model,
+      //           category:data.category,
+      //           characteristics: data.characteristics,
+      //           motor: data.motor,
+      //           price: data.price,
+      //           file: data.file,
+      //         })
+      //       })
+      //     }
+      //   }  
 }

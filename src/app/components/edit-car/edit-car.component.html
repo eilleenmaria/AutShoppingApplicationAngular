@@ -7,7 +7,7 @@
                     <div *ngIf="loading" class="spinner-border float-right" role="status">
                         <span class="sr-only">Loading...</span>
                       </div>
-                    <form class="mt-4"  [formGroup] = "carForm" (ngSubmit)=" addCar()" >
+                    <form class="mt-4"  [formGroup] = "carForm" (ngSubmit)="updateCar(this.id)"  >
                         <div class="row">
                             <div class="col">
                                 <input type="text" class="form-control" placeholder="Name" formControlName="name">
@@ -56,23 +56,24 @@
                         <textarea class="form-control mt-3" placeholder="Characteristics" formControlName="characteristics"></textarea>
                         <div class="text-danger" *ngIf="carForm.get('characteristics')?.hasError('required') && carForm.get('characteristics')?.touched">
                             <span>Characteristics is <strong>required</strong> </span>
-                        </div>   
-                    
-                       <div class="input-file mt-3">
+                        </div> 
+                       
+                                        
+                       <!-- <div class="input-file mt-3">
                         <input type="file" placeholder="File"
                         formControlName="file"
                         (change)="fileChangeEvent($event)"
                         style="background: goldenrod;"
                          >
                         <img class="mt-3 img-fluid img-thumbnail image" *ngIf="image" src="{{image}}">
-                       </div>
+                       </div> -->
                         <!-- <app-photo-base64 formControlName="importFile" ></app-photo-base64> -->
                         
                            
                       <div class=" d-grid gap-2 d-md-block mt-3">
-                        <button type="text"  routerLink="/listCar" class="btn btn-warning me-3">Return</button>
+                        <button type="text" style="color:goldenrod ;" routerLink="/listCar" class="btn-dark btn me-3">Return</button>
 
-                        <button type="submit" class="btn btn-warning" [disabled]="!carForm.valid">Add</button>
+                        <button type="submit" class="btn btn-dark" [disabled]="!carForm.valid">Add</button>
                       </div>
                     </form>
                 </div>
