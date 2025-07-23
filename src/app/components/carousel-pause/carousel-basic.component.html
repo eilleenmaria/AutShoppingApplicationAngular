@@ -1,7 +1,7 @@
 <ngb-carousel>
   <ng-template *ngFor="let image of carImage" ngbSlide>
     <div class="picsum-img-wrapper overflow-hidden">
-      <img src="{{image.img}}" alt="Random first slide">
+      <img src="{{image.img}}" class="img-fluid w-100" alt="{{image.name}}">
     </div>
     <div class="carousel-caption">
       <h3>{{image.name}}</h3>
