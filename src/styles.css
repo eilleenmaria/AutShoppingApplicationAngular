@@ -1,2 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
+html, body {
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+app-root {
+  display: flex; /* Habilita Flexbox */
+  flex-direction: column; /* Organiza los hijos en una columna vertical */
+   height: 100%;  
+}
+
+.content-wrapper { /* Puedes envolver <router-outlet> en un div con esta clase */
+  flex: 1; /* Esto hace que el wrapper ocupe todo el espacio disponible, empujando el footer */
+  display: flex; /* Si tu router-outlet carga layouts con flexbox, esto puede ser útil */
+  flex-direction: column; /* Si el contenido interno también debe apilarse */
+}
